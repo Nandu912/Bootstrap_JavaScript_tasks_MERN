@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 8</title>
+    <style>
+        h2 {
+            color: blue;
+            text-align: center; 
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #FAD5A5;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            padding: 10px;
+            display: flex; 
+            align-items: center; 
+        }
+
+        label {
+            flex: 1; 
+            font-weight: bold;
+            margin-right: 10px; 
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        textarea,
+        select {
+            flex: 2; 
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .checkbox-label {
+            font-weight: normal;
+        }
+
+        button[type="submit"] {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form id="registration-form">
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="re-enter-password">Re-enter Password</label>
+                <input type="password" id="re-enter-password" name="re-enter-password" required>
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female" required>
+                <label for="female">Female</label>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="phone-number">Phone Number</label>
+                <input type="number" id="phone-number" name="phone-number" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" required>
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" name="country" required>
+                    <option value="select">---Select---</option>
+                    <option value="usa">United States</option>
+                    <option value="canada">Canada</option>
+                    <option value="india">India</option>
+                    <option value="england">England</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Languages Known</label>
+                <input type="checkbox" id="english" name="languages[]" value="english">
+                <label for="english" class="checkbox-label">English</label>
+                <input type="checkbox" id="spanish" name="languages[]" value="spanish">
+                <label for="spanish" class="checkbox-label">Spanish</label>
+                <input type="checkbox" id="hindi" name="languages[]" value="spanish">
+                <label for="hindi" class="checkbox-label">Hindi</label>
+                <input type="checkbox" id="french" name="languages[]" value="spanish">
+                <label for="french" class="checkbox-label">French</label>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="declaration" required>
+                <label for="declaration" class="checkbox-label">Hereby I declare all the given details are true</label>
+            </div>
+            <div class="form-group">
+                <span>Log in to </span>
+                <a href="https://www.ethnus.com"> Ethnus </a>
+                <span>website</span>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById("registration-form").addEventListener("submit", function (event) {
+            var firstName = document.getElementById("first-name").value.trim();
+            var lastName = document.getElementById("last-name").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var password = document.getElementById("password").value;
+            var reenterPassword = document.getElementById("re-enter-password").value;
+            var age = parseInt(document.getElementById("age").value);
+            var phoneNumber = parseInt(document.getElementById("phone-number").value);
+
+            // Validation for First Name and Last Name (not empty)
+            if (firstName === "" || lastName === "") {
+                alert("Please enter both First Name and Last Name.");
+                event.preventDefault();
+                return;
+            }
+
+            // Validation for Email (using a simple regex pattern)
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                event.preventDefault();
+                return;
+            }
+
+            // Validation for Password and Re-enter Password (matching)
+            if (password !== reenterPassword) {
+                alert("Passwords do not match.");
+                event.preventDefault();
+                return;
+            }
+
+            // Validation for Age (numeric and in a valid range)
+            if (isNaN(age) || age < 18 || age > 99) {
+                alert("Please enter a valid age between 18 and 99.");
+                event.preventDefault();
+                return;
+            }
+
+            // Validation for Phone Number (numeric and a valid length)
+            if (isNaN(phoneNumber) || phoneNumber.toString().length !== 10) {
+                alert("Please enter a valid 10-digit phone number.");
+                event.preventDefault();
+                return;
+            }
+
+            var password = document.getElementById("password").value;
+
+            // Password strength validation function
+            function isPasswordStrong(password) {
+                // Define the criteria for a strong password
+                var minLength = 8;
+                var hasUppercase = /[A-Z]/.test(password);
+                var hasLowercase = /[a-z]/.test(password);
+                var hasNumber = /[0-9]/.test(password);
+                var hasSpecialChar = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(password);
+
+                // Check if the password meets the criteria
+                return (
+                    password.length >= minLength &&
+                    hasUppercase &&
+                    hasLowercase &&
+                    hasNumber &&
+                    hasSpecialChar
+                );
+            }
+
+            // Check if the password is strong
+            if (!isPasswordStrong(password)) {
+                alert("Please choose a stronger password. It should have at least 8 characters, including uppercase, lowercase, numbers, and special characters.");
+                event.preventDefault();
+                return;
+            }
+
+
+            // If all validations pass, the form will be submitted
+            alert("Form submitted!");
+        });
+    </script>
+</body>
+
+</html>

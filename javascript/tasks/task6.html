@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 35px;
+            text-align: center;
+            width: 300px;
+            border-radius: 5px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-button {
+            background-color: #3897f0;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .remember-me {
+            margin-top: 10px;
+        }
+
+        .forgot-password {
+            margin-top: 10px;
+            color: #3897f0;
+            text-decoration: none;
+        }
+
+        .sign-up-container {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #000;
+        }
+        
+        .sign-up {
+            color: #3897f0;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Instagram</h1>
+        <form id="loginForm">
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button class="login-button" type="submit">Log In</button>
+            <div class="remember-me">
+                <input type="checkbox" id="rememberMe"> <label for="rememberMe">Remember Me</label>
+                <a href="#" class="forgot-password" id="forgotPasswordLink">Forgot Password?</a>
+            </div>
+        </form>
+        <div class="sign-up-container">
+            <span>Don't have an account! </span>
+            <a href="#" class="sign-up">Sign up here</a>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const usernameOrEmail = document.querySelector('input[type="text"]').value;
+            const password = document.querySelector('input[type="password"]').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+
+            alert('Logged in as: ' + usernameOrEmail + '\nRemember Me: ' + rememberMe);
+        });
+
+        document.getElementById('forgotPasswordLink').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            alert('Forgot Password clicked.');
+        });
+    </script>
+</body>
+</html>

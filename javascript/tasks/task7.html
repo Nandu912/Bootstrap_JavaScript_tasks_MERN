@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 7</title>
+    <style>
+        h2 {
+            color: blue;
+        }
+
+        .train {
+            width: 180px;
+            height: 100px;
+            background-image: url('./train.png');
+            background-size: cover;
+            position: relative;
+            animation: moveTrain 5s linear infinite;
+        }
+
+        @keyframes moveTrain {
+            0% {
+                left: -100px;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .container {
+            width: 100%;
+            height: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #startBtn, #stopBtn {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="train"></div>
+    </div>
+    <h2>Click the following buttons to handle animation</h2>
+    <button id="startBtn">Start</button>
+    <button id="stopBtn">Stop</button>
+
+    <script>
+        const train = document.querySelector('.train');
+        const startButton = document.getElementById('startBtn');
+        const stopButton = document.getElementById('stopBtn');
+        let animationInterval;
+
+        function startTrainAnimation() {
+            train.style.animationPlayState = 'running';
+        }
+
+        function stopTrainAnimation() {
+            train.style.animationPlayState = 'paused';
+        }
+
+        startButton.addEventListener('click', startTrainAnimation);
+        stopButton.addEventListener('click', stopTrainAnimation);
+    </script>
+</body>
+</html>
